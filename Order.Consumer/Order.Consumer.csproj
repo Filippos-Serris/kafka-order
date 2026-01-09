@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-Order.Consumer-c2af0bf1-67ba-49ee-b457-706bf7d46be4</UserSecretsId>
   </PropertyGroup>
