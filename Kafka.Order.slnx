@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Order.Api/Order.Api.csproj" />
+  <Project Path="Order.Consumer/Order.Consumer.csproj" />
+  <Project Path="Shared.Contracts/Shared.Contracts.csproj" />
+  <Project Path="Shared.Kafka/Shared.Kafka.csproj" />
+</Solution>
