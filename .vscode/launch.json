@@ -1,0 +1,44 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Order.Api",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/Order.Api/bin/Debug/net10.0/Order.Api.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/Order.Api",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      }
+    },
+    {
+      "name": "Order.Consumer",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/Order.Consumer/bin/Debug/net10.0/Order.Consumer.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/Order.Consumer",
+      "stopAtEntry": false,
+      "env": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Order.Api + Order.Consumer",
+      "configurations": [
+        "Order.Api",
+        "Order.Consumer"
+      ]
+    }
+  ]
+}
