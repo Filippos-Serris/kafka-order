@@ -8,18 +8,18 @@ namespace Shared.Contracts.Events
         /// <summary>
         /// The unique identifier for the order.
         /// </summary>
-        public Guid OrderId { get; set; }
+        public Guid OrderId { get; init; }
         /// <summary>
         /// The unique identifier for the customer placing the order.
         /// </summary>
-        public Guid CustomerId { get; set; }
+        public Guid CustomerId { get; init; }
         /// <summary>
         /// Total monetary value of the order.
         /// </summary>
-        public decimal TotalAmount { get; set; }
+        public decimal TotalAmount { get; init; }
         /// <summary>
         /// The date and time when the order was created.
         /// </summary>
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; init; }
     }
 }

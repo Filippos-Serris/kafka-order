@@ -26,7 +26,7 @@ namespace Order.Api.Controllers
                 CreatedAt = DateTime.UtcNow
             };
 
-            await _publisher.PublishCreatedOrderEvntAsync(orderEvent, cancellationToken);
+            await _publisher.PublishCreatedOrderEventAsync(orderEvent, cancellationToken);
 
             return Accepted(new { orderEvent.OrderId });
         }

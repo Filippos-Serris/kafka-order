@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using Order.Consumer.Application.Commands;
 using Order.Consumer.Configuration;
 using Shared.Contracts.Events;
+using Shared.Kafka.Topics;
 
 namespace Order.Consumer.Infrastructure.Kafka
 {
@@ -25,8 +26,8 @@ namespace Order.Consumer.Infrastructure.Kafka
         {
             var config = new ConsumerConfig
             {
-                BootstrapServers = _configuration["Kafka:BootstrapServers"],
-                GroupId = _configuration["Kafka:GroupId"],
+                BootstrapServers = _options.BootstrapServers,
+                GroupId = _options.GroupId,
                 AutoOffsetReset = AutoOffsetReset.Earliest,
 
                 // kafka labes all messages as processed, this prevents ot for cases of failure in handling
@@ -34,7 +35,7 @@ namespace Order.Consumer.Infrastructure.Kafka
             };
 
             using var consumer = new ConsumerBuilder<Ignore, string>(config).Build();
-            consumer.Subscribe(_configuration["Kafka:Topic"]);
+            consumer.Subscribe(KafkaTopics.CreateOrderTopic);
 
             while (!stoppingToken.IsCancellationRequested)
             {
@@ -46,6 +47,7 @@ namespace Order.Consumer.Infrastructure.Kafka
                     new OrderCommand(order),
                     stoppingToken
                 );
+                consumer.Commit(result);
             }
         }
     }

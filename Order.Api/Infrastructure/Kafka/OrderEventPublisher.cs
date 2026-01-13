@@ -21,7 +21,7 @@ namespace Order.Api.Infrastructure.Kafka
             _producer = new ProducerBuilder<string, string>(config).Build();
         }
 
-        public async Task PublishCreatedOrderEvntAsync(CreateOrderEvent orderEvent, CancellationToken cancellationToken)
+        public async Task PublishCreatedOrderEventAsync(CreateOrderEvent orderEvent, CancellationToken cancellationToken)
         {
             var message = new Message<string, string>
             {
